@@ -37,3 +37,6 @@ This portfolio website is deployed using Microsoft Azure App Service.
 ## Author
 
 Dhruti Savani
+
+## Portfolio Preview
+![Portfolio Screenshot](screenshot/Screenshot 2026-07-07162317.png)
