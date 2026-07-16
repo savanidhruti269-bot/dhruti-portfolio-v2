@@ -1,4 +1,4 @@
-name: Build and deploy static website to Azure Web App - dhrutiportfolio-26
+name: Deploy static website to Azure Web App
 
 on:
   push:
@@ -6,12 +6,16 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Login to Azure
@@ -21,9 +25,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_51D8EB3742D9457BA3534D0F78C4780E }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_FE837245AF3041A3A4FA0C9D12BB6C0F }}
 
-      - name: Deploy to Azure Web App
+      - name: Deploy
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'dhrutiportfolio-26'
-          slot-name: 'Production'
+          app-name: dhrutiportfolio-26
+          slot-name: Production
           package: .
